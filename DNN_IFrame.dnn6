@@ -1,0 +1,123 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="DNN_IFrame" type="Module" version="04.05.00">
+      <friendlyName>IFrame</friendlyName>
+      <description>DNN IFrame module</description>
+      <iconFile>Images/icon_extensions.gif</iconFile>
+      <owner>
+        <name>DotNetNuke</name>
+        <organization>DNN Corp</organization>
+        <url>http://www.dotnetnuke.com</url>
+        <email>forge@dotnetnuke.com</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <azureCompatible>true</azureCompatible>
+      <dependencies>
+        <dependency type="CoreVersion">06.01.00</dependency>
+      </dependencies>      
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\IFrame</basePath>
+            <script type="Install">
+              <name>03.02.00.SqlDataProvider</name>
+              <version>03.02.00</version>
+            </script>
+            <script type="Install">
+              <name>03.02.03.SqlDataProvider</name>
+              <version>03.02.03</version>
+            </script>
+            <script type="Install">
+              <name>04.03.00.SqlDataProvider</name>
+              <version>04.03.00</version>
+            </script>
+            <script type="UnInstall">
+              <name>Uninstall.SqlDataProvider</name>
+              <version>04.05.00</version>
+            </script>
+          </scripts>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/IFrame</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>DNN_IFrame</moduleName>
+            <foldername>IFrame</foldername>
+            <businessControllerClass>DotNetNuke.Modules.IFrame.Controller</businessControllerClass>
+            <codeSubdirectory>IFrame</codeSubdirectory>
+            <supportedFeatures />
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>IFrame</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey />
+                    <controlSrc>DesktopModules/IFrame/IFrame.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle />
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpurl>http://www.dotnetnuke.com/default.aspx?tabid=787</helpurl>
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>DesktopModules/IFrame/EditIFrame.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Edit IFrame</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpurl>http://www.dotnetnuke.com/default.aspx?tabid=787</helpurl>
+                    <viewOrder>0</viewOrder>
+                    <supportsPopUps>True</supportsPopUps>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="File">
+          <files>
+            <basePath>App_Code\IFrame</basePath>
+            <file>
+              <name>DataProvider.vb</name>
+            </file>
+            <file>
+              <name>Controller.vb</name>
+            </file>
+          </files>
+        </component>
+        <component type="File">
+          <files>
+            <basePath>App_Code\IFrame\Domain</basePath>
+            <file>
+              <name>IFrameParameter.vb</name>
+            </file>
+            <file>
+              <name>IFrameParameterCollection.vb</name>
+            </file>
+            <file>
+              <name>IFrameParameterType.vb</name>
+            </file>
+          </files>
+        </component>
+        <component type="File">
+	        <files>
+            <basePath>App_Code\IFrame\Providers\DataProviders\SqlDataProvider</basePath>             
+            <file>
+              <name>SqlDataProvider.vb</name>
+            </file>
+          </files>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>

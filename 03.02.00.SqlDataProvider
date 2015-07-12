@@ -1,0 +1,171 @@
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+/***| Data Updates |*******************************************************************************/
+
+/***| Change Border Setting Name |***************/
+
+UPDATE	{databaseOwner}{objectQualifier}ModuleSettings 
+SET		SettingName = 'frameborder' 
+WHERE	SettingName = 'border' 
+  AND	ModuleID IN (SELECT m.ModuleID FROM {databaseOwner}{objectQualifier}Modules AS m 
+			INNER JOIN {databaseOwner}{objectQualifier}ModuleDefinitions AS md ON m.ModuleDefID = md.ModuleDefID 
+			INNER JOIN {databaseOwner}{objectQualifier}DesktopModules AS dm ON md.DesktopModuleID = dm.DesktopModuleID AND dm.ModuleName = 'DNN_IFrame')
+GO
+
+
+/***| Copy Name From Title Setting |*************/
+
+INSERT INTO {databaseOwner}{objectQualifier}ModuleSettings(ModuleID, SettingName, SettingValue) 
+SELECT	ms.ModuleID, 'name', ms.SettingValue
+FROM	{databaseOwner}{objectQualifier}ModuleSettings AS ms
+WHERE	SettingName = 'title' 
+  AND	ModuleID IN (SELECT m.ModuleID FROM {databaseOwner}{objectQualifier}Modules AS m 
+			INNER JOIN {databaseOwner}{objectQualifier}ModuleDefinitions AS md ON m.ModuleDefID = md.ModuleDefID 
+			INNER JOIN {databaseOwner}{objectQualifier}DesktopModules AS dm ON md.DesktopModuleID = dm.DesktopModuleID AND dm.ModuleName = 'DNN_IFrame')
+  AND	(SELECT COUNT(1) FROM {databaseOwner}{objectQualifier}ModuleSettings AS chk WHERE chk.ModuleID = ms.ModuleID AND chk.SettingName = ms.SettingName) = 0
+GO
+
+
+
+/***| Tables |*************************************************************************************/
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_Parameters]') AND OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+	CREATE TABLE {databaseOwner}[{objectQualifier}IFrame_Parameters] (
+		[ParameterID]  INT IDENTITY(1,1)  NOT NULL,
+		[ModuleID]     INT                NOT NULL,
+		[Name]         VARCHAR(50)        NOT NULL,
+		[Type]         VARCHAR(50)        NOT NULL,
+		[Argument]     NVARCHAR(2000),
+		CONSTRAINT     [PK_{objectQualifier}IFrame_Parameters] PRIMARY KEY CLUSTERED ([ParameterID] ASC)
+	)
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}IFrame_Parameters] ON {databaseOwner}[{objectQualifier}IFrame_Parameters] ([ModuleID])
+END
+GO
+
+
+
+/***| Stored Procedures |**************************************************************************/
+
+/***| Remove Existing |**************************/
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_AddParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_AddParameter
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_GetParameters]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_GetParameters
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_GetParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_GetParameter
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_UpdateParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_UpdateParameter
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_DeleteParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_DeleteParameter
+GO
+
+
+/***| Change Mode |******************************/
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/***| Parameters |*******************************/
+
+/***| Add |***/GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}IFrame_AddParameter]
+	@ModuleID	INT,
+	@Name		VARCHAR(50),
+	@Type		VARCHAR(50),
+	@Argument	NVARCHAR(2000)
+AS
+BEGIN
+	INSERT INTO {databaseOwner}{objectQualifier}IFrame_Parameters(ModuleID, [Name], [Type], Argument)
+	VALUES(@ModuleID, @Name, @Type, @Argument)
+END
+GO
+
+
+/***| Get* |***/GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}IFrame_GetParameters]
+	@ModuleID	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT	ParameterID, ModuleID, [Name], [Type], Argument
+	FROM	{databaseOwner}{objectQualifier}IFrame_Parameters
+	WHERE	ModuleID = @ModuleID
+END
+GO
+
+
+/***| Get |***/GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}IFrame_GetParameter]
+	@ParameterID	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT	ParameterID, ModuleID, [Name], [Type], Argument
+	FROM	{databaseOwner}{objectQualifier}IFrame_Parameters
+	WHERE	ParameterID = @ParameterID
+END
+GO
+
+
+/***| Update |***/GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}IFrame_UpdateParameter]
+	@ParameterID	INT,
+	@Name			VARCHAR(50),
+	@Type			VARCHAR(50),
+	@Argument		NVARCHAR(2000)
+AS
+BEGIN
+	UPDATE	{databaseOwner}{objectQualifier}IFrame_Parameters
+	SET		[Name]   = @Name, 
+			[Type]   = @Type, 
+			Argument = @Argument
+	WHERE	ParameterID = @ParameterID
+END
+GO
+
+
+/***| Delete |***/GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}IFrame_DeleteParameter]
+	@ParameterID	INT
+AS
+BEGIN
+	DELETE FROM {databaseOwner}{objectQualifier}IFrame_Parameters
+	WHERE	ParameterID = @ParameterID
+END
+GO
+
+
+/***| Change Mode |******************************/
+
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+

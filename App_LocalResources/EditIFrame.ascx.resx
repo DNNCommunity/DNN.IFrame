@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Edit IFrame</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>
+			&lt;h1&gt;Edit IFrame&lt;/h1&gt;
+			&lt;p&gt;
+				The &lt;b&gt;iframe&lt;/b&gt; element creates an inline frame that contains another document. 
+				This screen provides access to edit &lt;b&gt;iframe&lt;/b&gt; settings. These settings include 
+				the source URL of the document; querystring parameter to dynamically pull the 
+				source URL from; name of the &lt;b&gt;iframe&lt;/b&gt; (for use with scripts and/or as a target 
+				for links); display size (height and width); tool tip to be displayed when the user 
+				hovers over the &lt;b&gt;iframe&lt;/b&gt;; whether scrolling will be used, not used, or 
+				determined automatically; and, whether a border will or will not be displayed. 
+				Click &lt;b&gt;Save&lt;/b&gt; to save settings.
+			&lt;/p&gt;
+		</value>
+  </data>
+  <data name="dshOptions.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="plSource.Text" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="plSource.Help" xml:space="preserve">
+    <value>The URL of the document to show in the iframe</value>
+  </data>
+  <data name="plUrlParameter.Text" xml:space="preserve">
+    <value>URL Parameter</value>
+  </data>
+  <data name="plUrlParameter.Help" xml:space="preserve">
+    <value>The querystring parameter used to dynamically set the iframe source</value>
+  </data>
+  <data name="plName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="plName.Help" xml:space="preserve">
+    <value>Specifies a unique name of the iframe (to use in scripts or as targets for links/iframes)</value>
+  </data>
+  <data name="plWidth.Text" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="plWidth.Help" xml:space="preserve">
+    <value>Defines the width of the iframe</value>
+  </data>
+  <data name="plHeight.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="plHeight.Help" xml:space="preserve">
+    <value>Defines the height of the iframe</value>
+  </data>
+  <data name="plAutoHeight.Text" xml:space="preserve">
+    <value>Auto height</value>
+  </data>
+  <data name="plAutoHeight.Help" xml:space="preserve">
+    <value>Auto stretch the height according to the content of the frame. Works only if the document inside the iframe belongs to the same domain.</value>
+  </data>
+  <data name="dshLegacy.Text" xml:space="preserve">
+    <value>Other Options</value>
+  </data>
+  <data name="plOnLoad.Text" xml:space="preserve">
+    <value>onload (Javascript)</value>
+  </data>
+  <data name="plOnLoad.Help" xml:space="preserve">
+    <value>Javascript to execute onload, often used for resizing. Only setable for Administrator.</value>
+  </data>
+  <data name="plCssStyle.Text" xml:space="preserve">
+    <value>Css Style</value>
+  </data>
+  <data name="plCssStyle.Help" xml:space="preserve">
+    <value>For example:&lt;br\&gt;height:expression(contentWindow.document.body.scrollHeight+50);</value>
+  </data>
+  <data name="plToolTip.Text" xml:space="preserve">
+    <value>Tool tip</value>
+  </data>
+  <data name="plToolTip.Help" xml:space="preserve">
+    <value>A text to display in a tool tip when the user hovers the mouse over the iframe</value>
+  </data>
+  <data name="plScrolling.Text" xml:space="preserve">
+    <value>Scrolling</value>
+  </data>
+  <data name="plScrolling.Help" xml:space="preserve">
+    <value>Define scroll bar style - displayed (yes), not displayed (no), or automatic (auto)</value>
+  </data>
+  <data name="plBorder.Text" xml:space="preserve">
+    <value>Border</value>
+  </data>
+  <data name="plBorder.Help" xml:space="preserve">
+    <value>Specifies whether or not to display a frame border</value>
+  </data>
+  <data name="valWidth.Text" xml:space="preserve">
+    <value>&lt;br /&gt;Width must be a number greater than zero</value>
+  </data>
+  <data name="valHeight.Text" xml:space="preserve">
+    <value>&lt;br /&gt;Height must be a number greater than zero</value>
+  </data>
+  <data name="valURL.ErrorMessage" xml:space="preserve">
+    <value>&lt;br /&gt;You Must Enter a Valid URL</value>
+  </data>
+  <data name="dshParams.Text" xml:space="preserve">
+    <value>QueryString Parameters</value>
+  </data>
+  <data name="Name.Header" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Value.Header" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="Type.Header" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Argument.Header" xml:space="preserve">
+    <value>Argument</value>
+  </data>
+  <data name="ParameterInvalid.Header" xml:space="preserve">
+    <value>Invalid Parameter</value>
+  </data>
+  <data name="ParameterInvalid.Text" xml:space="preserve">
+    <value>The specified parameter options are invalid. Ensure the &lt;b&gt;Name&lt;/b&gt; and, if required, type argument are both specified.</value>
+  </data>
+  <data name="DeleteParamConfirmation.Text" xml:space="preserve">
+    <value>Are you sure you want to remove this item from the data store? Once removed it cannot be retrieved.</value>
+  </data>
+  <data name="cmdAddParam.Text" xml:space="preserve">
+    <value>Add QueryString Parameter</value>
+  </data>
+  <data name="StaticValue.Text" xml:space="preserve">
+    <value>Static Value</value>
+  </data>
+  <data name="PassThrough.Text" xml:space="preserve">
+    <value>Pass-Through QueryString</value>
+  </data>
+  <data name="FormPassThrough.Text" xml:space="preserve">
+    <value>Pass-Through Form Post</value>
+  </data>
+  <data name="UserCustomProperty.Text" xml:space="preserve">
+    <value>Custom User Property</value>
+  </data>
+  <data name="PortalID.Text" xml:space="preserve">
+    <value>Portal ID</value>
+  </data>
+  <data name="PortalName.Text" xml:space="preserve">
+    <value>Portal Name</value>
+  </data>
+  <data name="TabID.Text" xml:space="preserve">
+    <value>Tab ID</value>
+  </data>
+  <data name="ModuleID.Text" xml:space="preserve">
+    <value>Module ID</value>
+  </data>
+  <data name="UserID.Text" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="Locale.Text" xml:space="preserve">
+    <value>Current Locale</value>
+  </data>
+  <data name="UserUsername.Text" xml:space="preserve">
+    <value>User's Username</value>
+  </data>
+  <data name="UserFirstName.Text" xml:space="preserve">
+    <value>User's First Name</value>
+  </data>
+  <data name="UserLastName.Text" xml:space="preserve">
+    <value>User's Last Name</value>
+  </data>
+  <data name="UserDisplayName.Text" xml:space="preserve">
+    <value>User's Display Name</value>
+  </data>
+  <data name="UserEmail.Text" xml:space="preserve">
+    <value>User's Email</value>
+  </data>
+  <data name="UserWebsite.Text" xml:space="preserve">
+    <value>User's Website</value>
+  </data>
+  <data name="UserIM.Text" xml:space="preserve">
+    <value>User's IM</value>
+  </data>
+  <data name="UserStreet.Text" xml:space="preserve">
+    <value>User's Street</value>
+  </data>
+  <data name="UserUnit.Text" xml:space="preserve">
+    <value>User's Unit</value>
+  </data>
+  <data name="UserCity.Text" xml:space="preserve">
+    <value>User's City</value>
+  </data>
+  <data name="UserCountry.Text" xml:space="preserve">
+    <value>User's Country</value>
+  </data>
+  <data name="UserRegion.Text" xml:space="preserve">
+    <value>User's Region</value>
+  </data>
+  <data name="UserPostalCode.Text" xml:space="preserve">
+    <value>User's Postal Code</value>
+  </data>
+  <data name="UserPhone.Text" xml:space="preserve">
+    <value>User's Phone</value>
+  </data>
+  <data name="UserCell.Text" xml:space="preserve">
+    <value>User's Cell</value>
+  </data>
+  <data name="UserFax.Text" xml:space="preserve">
+    <value>User's Fax</value>
+  </data>
+  <data name="UserLocale.Text" xml:space="preserve">
+    <value>User's Locale</value>
+  </data>
+  <data name="UserTimeZone.Text" xml:space="preserve">
+    <value>User's TimeZone</value>
+  </data>
+  <data name="UserIsAuthorized.Text" xml:space="preserve">
+    <value>User's Authorized Flag</value>
+  </data>
+  <data name="UserIsLockedOut.Text" xml:space="preserve">
+    <value>User's Lock Out Flag</value>
+  </data>
+  <data name="UserIsSuperUser.Text" xml:space="preserve">
+    <value>User's SuperUser Flag</value>
+  </data>
+  <data name="Auto.Text" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="No.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Save.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Yes.Text" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="plAllowTransparency.Text" xml:space="preserve">
+    <value>Allow Transparency</value>
+  </data>
+  <data name="plAllowTransparency.Help" xml:space="preserve">
+    <value>Sets the attribute allowtransparancy=true to the iframe. The inner doc need also a corresponding css setting. IE only, setting it to true will break XHTML compliance.</value>
+  </data>
+  <data name="plUseAsHash.Help" xml:space="preserve">
+    <value>If selected, this parameter will not be used in a query string, but instead be added at the end of query string as a hash parameter. (i.e. yoursite.com/page.aspx#myhash)</value>
+  </data>
+  <data name="plUseAsHash.Text" xml:space="preserve">
+    <value>Use as Hash</value>
+  </data>
+</root>

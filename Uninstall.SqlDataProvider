@@ -1,0 +1,33 @@
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+/***| Tables |*************************************************************************************/
+
+ALTER TABLE {databaseOwner}[{objectQualifier}IFrame_Parameters] DROP CONSTRAINT [PK_{objectQualifier}IFrame_Parameters]
+GO
+DROP INDEX {databaseOwner}[{objectQualifier}IFrame_Parameters].[IX_{objectQualifier}IFrame_Parameters]
+GO
+DROP TABLE {databaseOwner}[{objectQualifier}IFrame_Parameters]
+GO
+
+
+/***| Stored Procedures |**************************************************************************/
+
+DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_AddParameter
+GO
+DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_GetParameters
+GO
+DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_GetParameter
+GO
+DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_UpdateParameter
+GO
+DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_DeleteParameter
+GO
