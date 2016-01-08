@@ -70,8 +70,9 @@ Namespace DotNetNuke.Modules.IFrame
         Public Sub New()
             ' init vars
             Dim _
-                objProvider As Provider = _
-                    CType(Me._providerConfiguration.Providers(Me._providerConfiguration.DefaultProvider), Provider)
+                objProvider As DotNetNuke.Framework.Providers.Provider = _
+                    CType(Me._providerConfiguration.Providers(Me._providerConfiguration.DefaultProvider), _
+						DotNetNuke.Framework.Providers.Provider)
 
             ' conn string
             'Get Connection string from web.config
