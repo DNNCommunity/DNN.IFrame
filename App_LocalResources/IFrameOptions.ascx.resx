@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllowTransparency.Help" xml:space="preserve">
+    <value>Sets the attribute allowtransparancy=true to the iframe. The inner doc needs a corresponding css setting as well. IE only, setting it to true will break XHTML compliance.</value>
+  </data>
+  <data name="AllowTransparency.Text" xml:space="preserve">
+    <value>Allow Transparancy</value>
+  </data>
+  <data name="Argument.Header" xml:space="preserve">
+    <value>Argument</value>
+  </data>
+  <data name="AutoHeight.Help" xml:space="preserve">
+    <value>Auto stretch the height according to the content of the frame. Works only if the document inside the iframe belongs to the same domain. Setting it to true disables the possibility to inject an onload javascript.</value>
+  </data>
+  <data name="AutoHeight.Text" xml:space="preserve">
+    <value>Auto Height</value>
+  </data>
+  <data name="Border.Help" xml:space="preserve">
+    <value>Check to set frame border. This is deprecated in newer browsers, use CSS instead.</value>
+  </data>
+  <data name="Border.Text" xml:space="preserve">
+    <value>Border</value>
+  </data>
+  <data name="CssStyle.Help" xml:space="preserve">
+    <value>Add style elements to be applied to the IFrame. Eg. "border: 10px dotted Fuchsia;"</value>
+  </data>
+  <data name="CssStyle.Text" xml:space="preserve">
+    <value>CSS Style</value>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Height.Help" xml:space="preserve">
+    <value>Enter the height of the IFrame.</value>
+  </data>
+  <data name="Height.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="JavaScript.Help" xml:space="preserve">
+    <value>Javascript to execute onload, often used for resizing. Only setable for Administrators. Note: This will be ignored if "Auto Heigth" is checked.</value>
+  </data>
+  <data name="JavaScript.Text" xml:space="preserve">
+    <value>OnLoad (Javascript)</value>
+  </data>
+  <data name="MoreOptions.Text" xml:space="preserve">
+    <value>More Options</value>
+  </data>
+  <data name="Name.Header" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Name.Help" xml:space="preserve">
+    <value>Specifies a unique name of the iframe (to use in scripts or as targets for links/iframes)</value>
+  </data>
+  <data name="Name.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NoParamaters.Text" xml:space="preserve">
+    <value>No parameters defined.</value>
+  </data>
+  <data name="Options.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="ParameterName.Help" xml:space="preserve">
+    <value>Enter the name of the querystring parameter</value>
+  </data>
+  <data name="ParameterName.Text" xml:space="preserve">
+    <value>Parameter Name</value>
+  </data>
+  <data name="Parameters.Text" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="ParametersGrid.Summary" xml:space="preserve">
+    <value>List of iframe URL parameters</value>
+  </data>
+  <data name="ParameterType.Help" xml:space="preserve">
+    <value>Select the parameter type. Normally this is a static value, but you may choose types that can be dynamically assigned depending of the user, the portal etc.</value>
+  </data>
+  <data name="ParameterType.Text" xml:space="preserve">
+    <value>Parameter Type</value>
+  </data>
+  <data name="ParameterValue.Help" xml:space="preserve">
+    <value>Enter the parameter value - some types allow to assign dynamic values, in this case, leave it empty.</value>
+  </data>
+  <data name="ParameterValue.Text" xml:space="preserve">
+    <value>Parameter Value</value>
+  </data>
+  <data name="Scrolling.Help" xml:space="preserve">
+    <value>Select the style of the scroll bar - displayed (yes), not displayed (no), or automatic (auto)</value>
+  </data>
+  <data name="Scrolling.Text" xml:space="preserve">
+    <value>Scrolling</value>
+  </data>
+  <data name="Source.Help" xml:space="preserve">
+    <value>Enter the Url of the document to show in the IFrame.</value>
+  </data>
+  <data name="Source.Text" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="ToolTip.Help" xml:space="preserve">
+    <value>A text to display in a tool tip when the user hovers the mouse over the iframe.</value>
+  </data>
+  <data name="ToolTip.Text" xml:space="preserve">
+    <value>Tool Tip</value>
+  </data>
+  <data name="Type.Header" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UseAsHash.Header" xml:space="preserve">
+    <value>Use as Hash</value>
+  </data>
+  <data name="UseAsHash.Help" xml:space="preserve">
+    <value>If selected, this parameter will not be used in a query string, but instead the name of the parameter will be added at the end of query string as a hash parameter. (i.e. yoursite.com/page.aspx#myhash)</value>
+  </data>
+  <data name="UseAsHash.Text" xml:space="preserve">
+    <value>Use as Hash</value>
+  </data>
+  <data name="Width.Help" xml:space="preserve">
+    <value>Enter the width of the IFrame.</value>
+  </data>
+  <data name="Width.Text" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="AddParameter.Text" xml:space="preserve">
+    <value>Add Parameter</value>
+  </data>
+  <data name="UpdateParameter.Text" xml:space="preserve">
+    <value>Update Parameter</value>
+  </data>
+  <data name="ParameterNameValidator.ErrorMessage" xml:space="preserve">
+    <value>The parameter name field is required.</value>
+  </data>
+  <data name="ParameterValueValidator.ErrorMessage" xml:space="preserve">
+    <value>The parameter value is required.</value>
+  </data>
+  <data name="Reset.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="SourceUrlValidator.ErrorMessage" xml:space="preserve">
+    <value>A valid Url is required.</value>
+  </data>
+</root>

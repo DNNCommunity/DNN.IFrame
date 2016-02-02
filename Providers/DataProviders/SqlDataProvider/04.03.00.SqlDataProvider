@@ -16,6 +16,7 @@ FROM    {databaseOwner}[{objectQualifier}DesktopModules] dm INNER JOIN
        {databaseOwner}[{objectQualifier}ModuleSettings] ms INNER JOIN
      {databaseOwner}[{objectQualifier}Modules] m ON ms.ModuleID = m.ModuleID ON md.ModuleDefID = m.ModuleDefID
 WHERE        (ms.SettingName = N'frameborder') AND (dm.FriendlyName = N'IFrame')
+GO
 
 /* approve value for allow transparency setting */
 UPDATE       ms
@@ -25,6 +26,7 @@ FROM    {databaseOwner}[{objectQualifier}DesktopModules] dm INNER JOIN
        {databaseOwner}[{objectQualifier}ModuleSettings] ms INNER JOIN
      {databaseOwner}[{objectQualifier}Modules] m ON ms.ModuleID = m.ModuleID ON md.ModuleDefID = m.ModuleDefID
 WHERE        (ms.SettingName = N'allowtransparency') AND (dm.FriendlyName = N'IFrame')
+GO
 
 /************************************************************/
 /*****              SqlDataProvider                     *****/

@@ -1,6 +1,0 @@
-﻿Install\Module\IFrame_03.02.00_Install.resources
-Install\Module\IFrame_03.02.01_Install.resources
-Install\Module\IFrame_03.02.02_Install.resources
-Install\Module\IFrame_03.02.03_Install.resources
-bin/DotNetNuke.Modules.IFrame.dll
-bin/DotNetNuke.Modules.IFrame.SqlDataProvider.dll

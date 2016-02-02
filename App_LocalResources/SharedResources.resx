@@ -117,13 +117,106 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EditOptions.Action" xml:space="preserve">
-    <value>Edit Options</value>
+  <data name="ParameterType.StaticValue.Text" xml:space="preserve">
+    <value>Static Value</value>
   </data>
-  <data name="NoSource.Text" xml:space="preserve">
-    <value>There is no source for this IFrame selected. Please choose "Edit Options" from the module's action menu and enter a source.</value>
+  <data name="ParameterType.PassThrough.Text" xml:space="preserve">
+    <value>Pass-Through Querystring</value>
   </data>
-  <data name="Unsupported.Text" xml:space="preserve">
-    <value>Your browser does not support inline frames. You may view the embedded docucument in a new browser window by clicking the following link: &lt;a href="{0}" target="_blank"&gt;{0}&lt;/a&gt;</value>
+  <data name="ParameterType.FormPassThrough.Text" xml:space="preserve">
+    <value>Pass-Through Form Post</value>
+  </data>
+  <data name="ParameterType.UserCustomProperty.Text" xml:space="preserve">
+    <value>Custom User Property</value>
+  </data>
+  <data name="ParameterType.PortalID.Text" xml:space="preserve">
+    <value>Portal ID</value>
+  </data>
+  <data name="ParameterType.PortalName.Text" xml:space="preserve">
+    <value>Portal Name</value>
+  </data>
+  <data name="ParameterType.Locale.Text" xml:space="preserve">
+    <value>Current Locale</value>
+  </data>
+  <data name="ParameterType.TabID.Text" xml:space="preserve">
+    <value>Tab ID</value>
+  </data>
+  <data name="ParameterType.ModuleID.Text" xml:space="preserve">
+    <value>Module ID</value>
+  </data>
+  <data name="ParameterType.UserID.Text" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="ParameterType.UserUsername.Text" xml:space="preserve">
+    <value>User's Username</value>
+  </data>
+  <data name="ParameterType.UserFirstName.Text" xml:space="preserve">
+    <value>User's First Name</value>
+  </data>
+  <data name="ParameterType.UserLastName.Text" xml:space="preserve">
+    <value>User's Last Name</value>
+  </data>
+  <data name="ParameterType.UserDisplayname.Text" xml:space="preserve">
+    <value>User's Display Name</value>
+  </data>
+  <data name="ParameterType.UserEmail.Text" xml:space="preserve">
+    <value>User's Email Address</value>
+  </data>
+  <data name="ParameterType.UserWebsite.Text" xml:space="preserve">
+    <value>User's Website</value>
+  </data>
+  <data name="ParameterType.UserIM.Text" xml:space="preserve">
+    <value>User's IM</value>
+  </data>
+  <data name="ParameterType.UserStreet.Text" xml:space="preserve">
+    <value>User's Street</value>
+  </data>
+  <data name="ParameterType.UserUnit.Text" xml:space="preserve">
+    <value>User's Unit</value>
+  </data>
+  <data name="ParameterType.UserCity.Text" xml:space="preserve">
+    <value>User's City</value>
+  </data>
+  <data name="ParameterType.UserCountry.Text" xml:space="preserve">
+    <value>User's Country</value>
+  </data>
+  <data name="ParameterType.UserRegion.Text" xml:space="preserve">
+    <value>User's Region</value>
+  </data>
+  <data name="ParameterType.UserPostalCode.Text" xml:space="preserve">
+    <value>User's Postal Code</value>
+  </data>
+  <data name="ParameterType.UserPhone.Text" xml:space="preserve">
+    <value>User's Phone</value>
+  </data>
+  <data name="ParameterType.UserCell.Text" xml:space="preserve">
+    <value>User's Cell</value>
+  </data>
+  <data name="ParameterType.UserFax.Text" xml:space="preserve">
+    <value>User's Fax</value>
+  </data>
+  <data name="ParameterType.UserLocale.Text" xml:space="preserve">
+    <value>User's Locale</value>
+  </data>
+  <data name="ParameterType.UserTimeZone.Text" xml:space="preserve">
+    <value>User's TimeZone</value>
+  </data>
+  <data name="ParameterType.UserIsAuthorized.Text" xml:space="preserve">
+    <value>User's Authorized Flag</value>
+  </data>
+  <data name="ParameterType.UserIsLockedOut.Text" xml:space="preserve">
+    <value>User's Lock Out Flag</value>
+  </data>
+  <data name="ParameterType.UserIsSuperUser.Text" xml:space="preserve">
+    <value>User's SuperUser Flag</value>
+  </data>
+  <data name="Scrolling.Auto.Text" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="Scrolling.No.Text" xml:space="preserve">
+    <value>Hidden</value>
+  </data>
+  <data name="Scrolling.Yes.Text" xml:space="preserve">
+    <value>Displayed</value>
   </data>
 </root>

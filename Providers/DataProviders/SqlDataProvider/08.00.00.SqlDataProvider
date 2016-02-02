@@ -1,0 +1,261 @@
+/************************************************************/
+/*****                 SqlDataProvider                  *****/
+/*****            for the DNN IFrame module             *****/
+/*****                Version: 08.00.00                 *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+-- Delete Stored Procedures (not needed anymore due to use of DAL2)
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_AddParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_AddParameter
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_GetParameters]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_GetParameters
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_GetParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_GetParameter
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_UpdateParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_UpdateParameter
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}IFrame_DeleteParameter]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+   DROP PROCEDURE {databaseOwner}{objectQualifier}IFrame_DeleteParameter
+GO
+
+-- Add foreign key to Modules
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}FK_{objectQualifier}IFrame_Parameters_{objectQualifier}Modules') AND parent_object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}IFrame_Parameters'))
+   ALTER TABLE {databaseOwner}{objectQualifier}IFrame_Parameters
+   DROP CONSTRAINT FK_{objectQualifier}IFrame_Parameters_{objectQualifier}Modules
+GO
+
+-- Delete Entries for removed modules
+DELETE FROM {databaseOwner}{objectQualifier}IFrame_Parameters
+WHERE ModuleID IN (SELECT i.ModuleID FROM {databaseOwner}{objectQualifier}IFrame_Parameters i LEFT JOIN {databaseOwner}{objectQualifier}Modules m ON m.ModuleID = i.ModuleID WHERE m.ModuleID IS NULL)
+
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}FK_{objectQualifier}IFrame_Parameters_{objectQualifier}Modules') AND parent_object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}IFrame_Parameters'))
+   ALTER TABLE {databaseOwner}{objectQualifier}IFrame_Parameters
+   DROP CONSTRAINT FK_{objectQualifier}IFrame_Parameters_{objectQualifier}Modules
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}IFrame_Parameters
+   ADD CONSTRAINT FK_{objectQualifier}IFrame_Parameters_{objectQualifier}Modules
+   FOREIGN KEY (ModuleID)
+   REFERENCES {databaseOwner}{objectQualifier}Modules (ModuleID)
+   ON UPDATE NO ACTION
+   ON DELETE CASCADE
+GO
+
+IF EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}FK_{objectQualifier}IFrame_Parameters_{objectQualifier}Modules') AND parent_object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}IFrame_Parameters'))
+   ALTER TABLE {databaseOwner}{objectQualifier}IFrame_Parameters
+   CHECK CONSTRAINT FK_{objectQualifier}IFrame_Parameters_{objectQualifier}Modules
+GO
+
+-- Update the Type field to match the Enum
+UPDATE {databaseOwner}{objectQualifier}IFrame_Parameters
+SET [Type] =
+   CASE
+      WHEN [Type]='StaticValue' THEN '0'
+      WHEN [Type]='PassThrough' THEN '1'
+      WHEN [Type]='FormPassThrough' THEN '2'
+      WHEN [Type]='UserCustomProperty' THEN '3'
+      WHEN [Type]='PortalID' THEN '4'
+      WHEN [Type]='PortalName' THEN '5'
+      WHEN [Type]='Locale' THEN '6'
+      WHEN [Type]='TabID' THEN '7'
+      WHEN [Type]='ModuleID' THEN '8'
+      WHEN [Type]='UserID' THEN '9'
+      WHEN [Type]='UserUsername' THEN '10'
+      WHEN [Type]='UserFirstName' THEN '11'
+      WHEN [Type]='UserLastName' THEN '12'
+      WHEN [Type]='UserDisplayname' THEN '13'
+      WHEN [Type]='UserEmail' THEN '14'
+      WHEN [Type]='UserWebsite' THEN '15'
+      WHEN [Type]='UserIM' THEN '16'
+      WHEN [Type]='UserStreet' THEN '17'
+      WHEN [Type]='UserUnit' THEN '18'
+      WHEN [Type]='UserCity' THEN '19'
+      WHEN [Type]='UserCountry' THEN '20'
+      WHEN [Type]='UserRegion' THEN '21'
+      WHEN [Type]='UserPostalCode' THEN '22'
+      WHEN [Type]='UserPhone' THEN '23'
+      WHEN [Type]='UserCell' THEN '24'
+      WHEN [Type]='UserFax' THEN '25'
+      WHEN [Type]='UserLocale' THEN '26'
+      WHEN [Type]='UserTimeZone' THEN '27'
+      WHEN [Type]='UserIsAuthorized' THEN '28'
+      WHEN [Type]='UserIsLockedOut' THEN '29'
+      WHEN [Type]='UserIsSuperUser' THEN '30'
+      ELSE NULL
+   END
+GO
+
+-- Change the Type field to int
+ALTER TABLE {databaseOwner}{objectQualifier}IFrame_Parameters
+   ALTER COLUMN [Type] int
+GO
+
+-- Add UseAsHash field to Parameters table
+ALTER TABLE {databaseOwner}{objectQualifier}IFrame_Parameters
+   ADD UseAsHash bit NULL
+GO
+
+-- Rearrange Settings and parameters
+DECLARE @ModuleDefID int
+DECLARE @ModuleID int
+
+SELECT @ModuleDefID = ModuleDefID FROM {databaseOwner}{objectQualifier}ModuleDefinitions WHERE FriendlyName = 'IFrame';
+
+-- Change some SettingNames in ModuleSettings
+WITH cteModules (ModuleID)
+AS
+(
+   SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID
+)
+UPDATE {databaseOwner}{objectQualifier}ModuleSettings
+SET SettingName = 
+   CASE
+      WHEN SettingName = 'allowtransparency' THEN 'AllowTransparency'
+      WHEN SettingName = 'frameborder' THEN 'Border'
+      WHEN SettingName = 'height' THEN 'Height'
+      WHEN SettingName = 'name' THEN 'Name'
+      WHEN SettingName = 'onload' THEN 'OnLoadJavaScript'
+      WHEN SettingName = 'scrolling' THEN 'Scrolling'
+      WHEN SettingName = 'src' THEN 'Source'
+      WHEN SettingName = 'style' THEN 'CssStyle'
+      WHEN SettingName = 'title' THEN 'ToolTip'
+      WHEN SettingName = 'width' THEN 'Width'
+      WHEN SettingName = 'x-autoheight' THEN 'AutoHeight'
+      WHEN SettingName = 'x-src-type' THEN 'UrlType'
+      ELSE SettingName 
+   END
+WHERE
+   ModuleID IN (SELECT ModuleID FROM cteModules);
+
+-- Move the 'x-use-as-hash' settings to the UseAsHash property to the parameters table
+DECLARE cur_Modules CURSOR FOR
+SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID
+
+OPEN cur_Modules
+FETCH NEXT FROM cur_Modules INTO @ModuleID
+
+WHILE @@FETCH_STATUS = 0
+   BEGIN
+      UPDATE {databaseOwner}{objectQualifier}IFrame_Parameters
+      SET
+         UseAsHash = 1,
+         Name = Argument,
+         Argument = NULL
+      WHERE
+         ModuleID = @ModuleID AND ParameterID = (SELECT SettingValue FROM {databaseOwner}{objectQualifier}ModuleSettings WHERE ModuleID = @ModuleID AND SettingName = 'x-use-as-hash')
+
+      FETCH NEXT FROM cur_Modules INTO @ModuleID
+   END
+
+CLOSE cur_Modules
+DEALLOCATE cur_Modules;
+
+-- Delete the 'use-as-hash' settings from the module settings
+WITH cte_Modules (ModuleID) AS
+(
+   SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID
+)
+DELETE FROM {databaseOwner}{objectQualifier}ModuleSettings
+WHERE ModuleID IN (SELECT ModuleID FROM cte_Modules) AND SettingName = 'x-use-as-hash'
+
+-- Update Scrolling values to match the Enum
+UPDATE {databaseOwner}{objectQualifier}ModuleSettings
+SET SettingValue =
+   CASE WHEN SettingValue = 'auto' THEN '0'
+      WHEN SettingValue = 'yes' THEN '1'
+      ELSE '2'
+   END
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'Scrolling')
+
+-- Delete Default
+DELETE FROM {databaseOwner}{objectQualifier}ModuleSettings
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'Scrolling' AND SettingValue = '0')
+
+-- Update AutoHeight Values
+UPDATE {databaseOwner}{objectQualifier}ModuleSettings
+SET SettingValue =
+   CASE WHEN SettingValue = 'True' THEN 'True'
+      ELSE 'False'
+   END
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'AutoHeight')
+
+-- Delete Default
+DELETE FROM {databaseOwner}{objectQualifier}ModuleSettings
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'AutoHeight' AND SettingValue = 'False')
+
+-- Update Border Values
+UPDATE {databaseOwner}{objectQualifier}ModuleSettings
+SET SettingValue =
+   CASE WHEN SettingValue = '0' THEN 'False'
+      ELSE 'True'
+   END
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'Border')
+
+-- Delete Default
+DELETE FROM {databaseOwner}{objectQualifier}ModuleSettings
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'Border' AND SettingValue = 'False')
+
+-- Update Transparancy Values
+UPDATE {databaseOwner}{objectQualifier}ModuleSettings
+SET SettingValue =
+   CASE WHEN SettingValue = '' THEN 'False'
+      ELSE 'True'
+   END
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'AllowTransparency')
+
+-- Delete Default
+DELETE FROM {databaseOwner}{objectQualifier}ModuleSettings
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingName = 'AllowTransparency' AND SettingValue = 'False')
+
+-- Delete other Default values
+DELETE FROM {databaseOwner}{objectQualifier}ModuleSettings
+WHERE
+   ModuleID IN (SELECT ModuleID FROM {databaseOwner}{objectQualifier}Modules WHERE ModuleDefID = @ModuleDefID AND SettingValue = '')
+GO
+
+-- Add two additional indexes
+IF EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}IFrame_Parameters') AND name = N'UIX_{objectQualifier}IFrame_Parameters_UseAsHashCode_Check')
+   DROP INDEX UIX_{objectQualifier}IFrame_Parameters_UseAsHashCode_Check ON {databaseOwner}{objectQualifier}IFrame_Parameters
+GO
+
+IF EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}IFrame_Parameters') AND name = N'UIX_{objectQualifier}IFrame_Parameters_ModuleID_Name')
+   DROP INDEX UIX_{objectQualifier}IFrame_Parameters_ModuleID_Name ON {databaseOwner}{objectQualifier}IFrame_Parameters
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}IFrame_Parameters') AND name = N'UIX_{objectQualifier}IFrame_Parameters_UseAsHashCode_Check')
+CREATE UNIQUE NONCLUSTERED INDEX UIX_{objectQualifier}IFrame_Parameters_UseAsHashCode_Check ON {databaseOwner}{objectQualifier}IFrame_Parameters
+(
+   ModuleID ASC,
+   UseAsHash ASC
+)
+WHERE (UseAsHash=(1))
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}{objectQualifier}IFrame_Parameters') AND name = N'UIX_{objectQualifier}IFrame_Parameters_ModuleID_Name')
+CREATE UNIQUE NONCLUSTERED INDEX UIX_{objectQualifier}IFrame_Parameters_ModuleID_Name ON {databaseOwner}{objectQualifier}IFrame_Parameters
+(
+   ModuleID ASC,
+   Name ASC
+)
+GO
+

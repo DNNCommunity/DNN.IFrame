@@ -1,0 +1,18 @@
+﻿.NumberBox { text-align:right; }
+
+.IFrameParameterSelected {
+   background-color: #edf8ff;
+   color: #085b8f;
+   text-shadow: 0px 1px 1px #fff;
+   border-bottom: 1px #085b8f solid;
+}
+
+.IFrameParameterSelected td {
+   padding: 6px;
+}
+
+ul.dnnActions.dnnClear.ParametersForm
+{
+   border-bottom: #ddd solid 1px;
+   width: 98%;
+}
