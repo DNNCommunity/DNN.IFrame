@@ -34,7 +34,7 @@
                CssClass="dnnFormMessage dnnFormError"
                ForeColor="White"
                ResourceKey="SourceUrlValidator.ErrorMessage"
-               ValidationExpression="http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&amp;=!+]*)?"
+               ValidationExpression="http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&amp;=,!+]*)?"
                ValidationGroup="IFrameParametersValidation" />
             <asp:RequiredFieldValidator ID="SourceUrlRequiredValidator" runat="server"
                ControlToValidate="SourceUrl$txtUrl"
