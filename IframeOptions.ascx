@@ -45,6 +45,16 @@
          </div>
 
          <div class="dnnFormItem">
+            <dnn:Label ID="IgnoreSourceUrlValidationLabel" runat="server"
+               ControlName="IgnoreSourceUrlValidationCheckBox"
+               ResourceKey="IgnoreSourceUrlValidation"
+               Suffix="?" />
+            <asp:CheckBox ID="IgnoreSourceUrlValidationCheckBox" runat="server"
+               AutoPostBack="true"
+               OnCheckedChanged="IgnoreSourceUrlValidationCheckBox_CheckedChanged" />
+         </div>
+
+         <div class="dnnFormItem">
             <dnn:Label ID="WidthLabel" runat="server"
                ControlName="WidthTextBox"
                ResourceKey="Width"

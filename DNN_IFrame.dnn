@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
    <packages>
-      <package name="DNN_IFrame" type="Module" version="08.00.02">
+      <package name="DNN_IFrame" type="Module" version="08.01.00">
          <friendlyName>IFrame</friendlyName>
          <description>
             <![CDATA[
@@ -11,7 +11,7 @@
          <owner>
             <name>Michael Tobisch</name>
             <organization>DNN Connect</organization>
-            <url>http://dnn-connect.org</url>
+            <url>https://dnn-connect.org/</url>
             <email>noreply@dnn-connect.org</email>
          </owner>
          <license src="Documentation\License.html" />
@@ -181,7 +181,7 @@
                   <script type="UnInstall">
                      <path>Providers\DataProviders\SqlDataProvider</path>
                      <name>Uninstall.SqlDataProvider</name>
-                     <version>08.00.02</version>
+                     <version>08.01.00</version>
                   </script>
                 </scripts>
             </component>
@@ -231,7 +231,7 @@
                   <attributes>
                      <businessControllerClass>DotNetNuke.Modules.IFrame.Components.ParametersController</businessControllerClass>
                      <desktopModuleID>[DESKTOPMODULEID]</desktopModuleID>
-                     <upgradeVersionsList>03.02.00,03.02.03,04.03.00,04.04.00,08.00.00,08.00.01,08.00.02</upgradeVersionsList>
+                     <upgradeVersionsList>03.02.00,03.02.03,04.03.00,04.04.00,08.00.00,08.00.01,08.00.02,08.01.00</upgradeVersionsList>
                   </attributes>
                </eventMessage>
             </component>
@@ -241,7 +241,7 @@
                   <assembly>
                      <path>bin</path>
                      <name>DotNetNuke.Modules.IFrame.dll</name>
-                     <version>8.0.2.0</version>
+                     <version>8.1.0.0</version>
                   </assembly>
                </assemblies>
             </component>

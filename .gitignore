@@ -216,3 +216,6 @@ Thumbs.db
 # Folder config file
 Desktop.ini
 Website/Install/Temp/
+/App_LocalResources/IFrame.ascx.de-AT.resx
+/App_LocalResources/IFrameOptions.ascx.de-AT.resx
+/App_LocalResources/SharedResources.de-AT.resx

@@ -258,4 +258,10 @@
   <data name="SourceUrlValidator.ErrorMessage" xml:space="preserve">
     <value>A valid Url is required.</value>
   </data>
+  <data name="IgnoreSourceUrlValidation.Help" xml:space="preserve">
+    <value>Check this option when you are sure that your Url is valid, but the validation fails. This is because the Url is validated against a regular expression that may not include every case. Anyway, if you find a problem like this please post it to the issues part of the project page (&lt;a href="https://github.com/DNNCommunity/DNN.IFrame/issues" target="_blank"&gt;https://github.com/DNNCommunity/DNN.IFrame/issues&lt;/a&gt;).</value>
+  </data>
+  <data name="IgnoreSourceUrlValidation.Text" xml:space="preserve">
+    <value>Ignore source validation</value>
+  </data>
 </root>

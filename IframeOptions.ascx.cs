@@ -83,6 +83,11 @@ namespace DotNetNuke.Modules.IFrame.UI
          set { UpdateTextSetting("UrlType", value); }
       }
 
+      private bool IgnoreSourceUrlValidation
+      {
+         get { return Convert.ToBoolean(Settings["IgnoreSourceUrlValidation"]); }
+         set { UpdateBooleanSetting("IgnoreSourceUrlValidation", value); }
+      }
       private string Width
       {
          get { return Convert.ToString(Settings["Width"]); }
@@ -228,6 +233,7 @@ namespace DotNetNuke.Modules.IFrame.UI
             // Assign values
             SourceUrl.Url = Source;
             SourceUrl.UrlType = UrlType;
+            IgnoreSourceUrlValidationCheckBox.Checked = IgnoreSourceUrlValidation;
             WidthTextBox.Text = Width;
             HeightTextBox.Text = Height;
             AutoHeightCheckBox.Checked = AutoHeight;
@@ -295,6 +301,12 @@ namespace DotNetNuke.Modules.IFrame.UI
          DisplayOrHideParameterFormPanels();
       }
 
+      protected void IgnoreSourceUrlValidationCheckBox_CheckedChanged(object sender, EventArgs e)
+      {
+         CheckBox ignoreSourceUrlValidationCheckBox = (CheckBox)sender;
+         SourceUrlRegExpValidator.Enabled = (!(ignoreSourceUrlValidationCheckBox.Checked));
+      }
+
       public void ScrollingDropDownList_Load(object sender, EventArgs e)
       {
          if (!(Page.IsPostBack))
@@ -324,6 +336,7 @@ namespace DotNetNuke.Modules.IFrame.UI
          {
             Source = SourceUrl.Url;
             UrlType = SourceUrl.UrlType;
+            IgnoreSourceUrlValidation = IgnoreSourceUrlValidationCheckBox.Checked;
             Width = WidthTextBox.Text;
             Height = HeightTextBox.Text;
             AutoHeight = AutoHeightCheckBox.Checked;
