@@ -234,6 +234,7 @@ namespace DotNetNuke.Modules.IFrame.UI
             SourceUrl.Url = Source;
             SourceUrl.UrlType = UrlType;
             IgnoreSourceUrlValidationCheckBox.Checked = IgnoreSourceUrlValidation;
+            SourceUrlRegExpValidator.Enabled = (!(IgnoreSourceUrlValidation));
             WidthTextBox.Text = Width;
             HeightTextBox.Text = Height;
             AutoHeightCheckBox.Checked = AutoHeight;
