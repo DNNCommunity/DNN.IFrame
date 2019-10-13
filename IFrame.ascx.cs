@@ -61,7 +61,7 @@ namespace DotNetNuke.Modules.IFrame.UI
 
                   List<ParametersInfo> parameters = (List<ParametersInfo>)ParametersController.GetParameters(ModuleId);
 
-                  if (parameters.Count() > 0)
+                  if ((parameters != null) && (parameters.Count() > 0))
                   {
                      bool queryStringOpen = false;
                      foreach (ParametersInfo p in parameters)
