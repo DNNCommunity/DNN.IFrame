@@ -36,52 +36,6 @@ namespace DotNetNuke.Modules.IFrame.Components
    [Cacheable("IFrame_Parameters", CacheItemPriority.Normal, 20)]
    public class ParametersInfo
    {
-      private char[] _invalidCharacters = new char[]{'<', '>', ',', ' ', ';', '\"', '\'', '?', '&' };
-
-      private ModuleController _moduleController = null;
-      protected ModuleController ModuleController
-      {
-         get
-         {
-            if (_moduleController == null)
-               _moduleController = new ModuleController();
-            return _moduleController;
-         }
-      }
-
-      private ModuleInfo _moduleInfo = null;
-      protected ModuleInfo ModuleInfo
-      {
-         get
-         {
-            if (_moduleController == null)
-               _moduleInfo = ModuleController.GetModule(ModuleID);
-            return _moduleInfo;
-         }
-      }
-
-      private PortalController _portalController = null;
-      protected PortalController PortalController
-      {
-         get
-         {
-            if (_portalController == null)
-               _portalController = new PortalController();
-            return _portalController;
-         }
-      }
-
-      private PortalInfo _portalInfo = null;
-      private PortalInfo PortalInfo
-      {
-         get
-         {
-            if (_portalInfo == null)
-               _portalInfo = PortalController.GetPortal(ModuleInfo.PortalID);
-            return _portalInfo;
-         }
-      }
-
       public int ParameterID { get; set; }
       public int ModuleID { get; set; }
       public string Name { get; set; }
@@ -89,6 +43,36 @@ namespace DotNetNuke.Modules.IFrame.Components
       public string Argument { get; set; }
       public bool UseAsHash { get; set; }
 
+      [IgnoreColumn]
+      private char[] _invalidCharacters = new char[]{'<', '>', ',', ' ', ';', '\"', '\'', '?', '&' };
+
+      [IgnoreColumn]
+      private ModuleInfo _moduleInfo = null;
+
+      [IgnoreColumn]
+      private ModuleInfo ModuleInfo
+      {
+         get
+         {
+            _moduleInfo = ModuleController.Instance.GetModule(ModuleID, -1, true);
+            return _moduleInfo;
+         }
+      }
+
+      [IgnoreColumn]
+      private PortalInfo _portalInfo = null;
+
+      [IgnoreColumn]
+      private PortalInfo PortalInfo
+      {
+         get
+         {
+            _portalInfo = PortalController.Instance.GetPortal(ModuleInfo.PortalID);
+            return _portalInfo;
+         }
+      }
+
+      [IgnoreColumn]
       public override string ToString()
       {
          if (UseAsHash)
@@ -109,6 +93,7 @@ namespace DotNetNuke.Modules.IFrame.Components
          }
       }
 
+      [IgnoreColumn]
       public bool IsArgumentRequired()
       {
          bool argumentIsRequired;
@@ -127,6 +112,7 @@ namespace DotNetNuke.Modules.IFrame.Components
          return argumentIsRequired;
       }
 
+      [IgnoreColumn]
       public string GetValue()
       {
          string result = string.Empty;
